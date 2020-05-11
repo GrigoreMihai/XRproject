@@ -2069,17 +2069,17 @@ PrefabInstance:
     - target: {fileID: 6409554700681250344, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.958
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409554700681250344, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.933
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409554700681250344, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.3269997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409554700681250344, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
@@ -2204,7 +2204,7 @@ PrefabInstance:
     - target: {fileID: 7032258533655045440, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7124095708933458282, guid: 14f97125094ea1141aad5ea1cd9961f8,
         type: 3}
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   NNModel: {fileID: 5022602860645237092, guid: 8b7197bb511d0044cbdb2b118157faef, type: 3}
   WorkerType: 256
   Verbose: 0
-  VNectModel: {fileID: 1009339738}
+  VNectModel: {fileID: 1171456431}
   videoCapture: {fileID: 1873549733}
   InputImageSize: 448
   HeatMapCol: 28
@@ -3658,7 +3658,7 @@ PrefabInstance:
     - target: {fileID: 8315583863143335206, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700616, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
