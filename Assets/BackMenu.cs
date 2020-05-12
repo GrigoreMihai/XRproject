@@ -9,9 +9,7 @@ public class BackMenu: MonoBehaviour
     public void BackMEnu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        Debug.Log("QUIT!");
-        Application.Quit();
-       
+      
     }
 
 

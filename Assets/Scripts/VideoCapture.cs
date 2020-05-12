@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-
+using UnityEngine.SceneManagement;
 public class VideoCapture : MonoBehaviour
 {
     public GameObject InputTexture;
@@ -122,4 +122,10 @@ public class VideoCapture : MonoBehaviour
         camera.targetTexture = MainTexture;
         if (InputTexture.activeSelf) InputTexture.GetComponent<Renderer>().material.mainTexture = MainTexture;
     }
+
+    public void Stop()    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);        this.webCamTexture.Stop();    }
+
+
+
 }
