@@ -14,58 +14,44 @@ namespace TensorFlowLite
         public enum Part
         {
             NOSE,
+
             LEFT_EYE,
             RIGHT_EYE,
+
             LEFT_EAR,
             RIGHT_EAR,
+
             LEFT_SHOULDER,
             RIGHT_SHOULDER,
+
             LEFT_ELBOW,
             RIGHT_ELBOW,
+
             LEFT_WRIST,
             RIGHT_WRIST,
+
             LEFT_HIP,
             RIGHT_HIP,
+
             LEFT_KNEE,
             RIGHT_KNEE,
-            LEFT_ANKLE,
-            RIGHT_ANKLE
-        }
 
-        public static readonly Part[,] Connections = new Part[,]
-        {
-            // HEAD
-            { Part.LEFT_EAR, Part.LEFT_EYE },
-            { Part.LEFT_EYE, Part.NOSE },
-            { Part.NOSE, Part.RIGHT_EYE },
-            { Part.RIGHT_EYE, Part.RIGHT_EAR },
-            // BODY
-            { Part.LEFT_HIP, Part.LEFT_SHOULDER },
-            { Part.LEFT_ELBOW, Part.LEFT_SHOULDER },
-            { Part.LEFT_ELBOW, Part.LEFT_WRIST },
-            { Part.LEFT_HIP, Part.LEFT_KNEE },
-            { Part.LEFT_KNEE, Part.LEFT_ANKLE },
-            { Part.RIGHT_HIP, Part.RIGHT_SHOULDER },
-            { Part.RIGHT_ELBOW, Part.RIGHT_SHOULDER },
-            { Part.RIGHT_ELBOW, Part.RIGHT_WRIST },
-            { Part.RIGHT_HIP, Part.RIGHT_KNEE },
-            { Part.RIGHT_KNEE, Part.RIGHT_ANKLE },
-            { Part.LEFT_SHOULDER, Part.RIGHT_SHOULDER },
-            { Part.LEFT_HIP, Part.RIGHT_HIP }
-        };
+            LEFT_ANKLE,
+            RIGHT_ANKLE,
+
+            /* number of points */
+            COUNT
+        }
 
         [System.Serializable]
         public struct Result
         {
-            public Part part;
+            public Vector3 position; // use a vector3 to allow rotations. the z component is 0
             public float confidence;
-            public Vector3 position; // use a vector3 to  the z component is 0
-            public float x;
-            public float y;
         }
 
 
-        Result[] results = new Result[17];
+        Result[] results = new Result[(int)Part.COUNT];
 
         float[,,] outputs0; // heatmap
         float[,,] outputs1; // offset
@@ -118,10 +104,7 @@ namespace TensorFlowLite
                 res.position.x = ((float)arg.x / stride * width + offsetX) / width;
                 res.position.y = ((float)arg.y / stride * height + offsetY) / height;
                 res.position.z = 0;
-                res.x = ((float)arg.x / stride * width + offsetX) / width;
-                res.y = ((float)arg.y / stride * height + offsetY) / height;
                 res.confidence = arg.score;
-                res.part = (Part)part;
 
                 results[part] = res;
             }
