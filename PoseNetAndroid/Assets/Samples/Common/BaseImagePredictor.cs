@@ -17,6 +17,8 @@ namespace TensorFlowLite
         public Texture2D inputTex => tex2tensor.texture;
         public Material transformMat => tex2tensor.material;
 
+        public RenderTexture debugTexture;
+
         public TextureToTensor.ResizeOptions ResizeOptions
         {
             get => resizeOptions;
@@ -63,8 +65,9 @@ namespace TensorFlowLite
 
         protected void ToTensor(Texture inputTex, float[,,] inputs, float offset, float scale)
         {
-            RenderTexture tex = tex2tensor.Resize(inputTex, resizeOptions);
-            tex2tensor.ToTensor(tex, inputs, offset, scale);
+            //RenderTexture tex = tex2tensor.Resize(inputTex, resizeOptions);
+            debugTexture = tex2tensor.Resize(inputTex, resizeOptions);
+            tex2tensor.ToTensor(debugTexture, inputs, offset, scale);
         }
 
         protected void ToTensor(Texture inputTex, sbyte[,,] inputs)
