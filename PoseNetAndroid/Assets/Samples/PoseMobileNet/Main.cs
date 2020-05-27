@@ -92,18 +92,26 @@ public class Main : MonoBehaviour
         //glDrawer.OnDraw -= OnGLDraw;
     }
 
-    void Update()
+    void RunNetwork(Texture2D texture)
     {
-        Color32[] color32 = webcamTexture.GetPixels32();
-        texture.SetPixels32(color32);
-        texture.Apply();
-
         ResizeTexture(texture);
 
         networkInputs = texture;
 
         network.Invoke(networkInputs);
         results = network.GetResults();
+
+        animateCharacter.SetNetworkResults(results);
+    }
+
+    void Update()
+    {
+        Color32[] color32 = webcamTexture.GetPixels32();
+        texture.SetPixels32(color32);
+        texture.Apply();
+
+
+        StartCoroutine("RunNetwork", texture);
         //results = network.GetResults();
         //results = networkResults;
 
@@ -121,7 +129,6 @@ public class Main : MonoBehaviour
         }
         */
 
-        animateCharacter.SetNetworkResults(results);
 
         // set uv
         // cameraView.uvRect = TextureToTensor.GetUVRect(
