@@ -67,6 +67,25 @@ public class AnimateCharacter : MonoBehaviour
         public JointPoint Parent = null;
     }
 
+    public class Skeleton
+    {
+        public GameObject LineObject;
+        public LineRenderer Line;
+
+        public JointPoint start = null;
+        public JointPoint end = null;
+    }
+
+    private List<Skeleton> Skeletons = new List<Skeleton>();
+    public Material SkeletonMaterial;
+
+    public bool ShowSkeleton;
+    private bool useSkeleton;
+    public float SkeletonX;
+    public float SkeletonY;
+    public float SkeletonZ;
+    public float SkeletonScale;
+
     // Joint position and bone
     private JointPoint[] jointPoints;
 
@@ -177,6 +196,51 @@ public class AnimateCharacter : MonoBehaviour
         // etc
         jointPoints[(int)JointIndex.SPINE].Child = jointPoints[(int)JointIndex.NECK];
         jointPoints[(int)JointIndex.NECK].Child = jointPoints[(int)JointIndex.HEAD];
+
+        useSkeleton = ShowSkeleton;
+        if (useSkeleton)
+        {
+            // Line Child Settings
+            // Right Arm
+            AddSkeleton(JointIndex.RIGHT_SHOULDER, JointIndex.RIGHT_ELBOW);
+            AddSkeleton(JointIndex.RIGHT_ELBOW, JointIndex.RIGHT_WRIST);
+            AddSkeleton(JointIndex.RIGHT_WRIST, JointIndex.RIGHT_THUMB);
+            AddSkeleton(JointIndex.RIGHT_WRIST, JointIndex.RIGHT_MID);
+
+            // Left Arm
+            AddSkeleton(JointIndex.LEFT_SHOULDER, JointIndex.LEFT_ELBOW);
+            AddSkeleton(JointIndex.LEFT_ELBOW, JointIndex.LEFT_WRIST);
+            AddSkeleton(JointIndex.LEFT_WRIST, JointIndex.LEFT_THUMB);
+            AddSkeleton(JointIndex.LEFT_WRIST, JointIndex.LEFT_MID);
+
+            // Fase
+            AddSkeleton(JointIndex.LEFT_EAR, JointIndex.NOSE);
+            AddSkeleton(JointIndex.RIGHT_EAR, JointIndex.NOSE);
+
+            // Right Leg
+            AddSkeleton(JointIndex.RIGHT_HIP, JointIndex.RIGHT_KNEE);
+            AddSkeleton(JointIndex.RIGHT_KNEE, JointIndex.RIGHT_ANKLE);
+            AddSkeleton(JointIndex.RIGHT_ANKLE, JointIndex.RIGHT_TOE);
+
+            // Left Leg
+            AddSkeleton(JointIndex.LEFT_HIP, JointIndex.LEFT_KNEE);
+            AddSkeleton(JointIndex.LEFT_KNEE, JointIndex.LEFT_ANKLE);
+            AddSkeleton(JointIndex.LEFT_ANKLE, JointIndex.LEFT_TOE);
+
+            // etc
+            AddSkeleton(JointIndex.SPINE, JointIndex.NECK);
+            AddSkeleton(JointIndex.NECK, JointIndex.HEAD);
+            AddSkeleton(JointIndex.HEAD, JointIndex.NOSE);
+            AddSkeleton(JointIndex.NECK, JointIndex.RIGHT_SHOULDER);
+            AddSkeleton(JointIndex.NECK, JointIndex.LEFT_SHOULDER);
+            AddSkeleton(JointIndex.RIGHT_HIP, JointIndex.RIGHT_SHOULDER);
+            AddSkeleton(JointIndex.LEFT_HIP, JointIndex.LEFT_SHOULDER);
+            AddSkeleton(JointIndex.RIGHT_SHOULDER, JointIndex.ABDOMEN_UPPER);
+            AddSkeleton(JointIndex.LEFT_SHOULDER, JointIndex.ABDOMEN_UPPER);
+            AddSkeleton(JointIndex.RIGHT_HIP, JointIndex.ABDOMEN_UPPER);
+            AddSkeleton(JointIndex.LEFT_HIP, JointIndex.ABDOMEN_UPPER);
+            AddSkeleton(JointIndex.LEFT_HIP, JointIndex.RIGHT_HIP);
+        }
 
         // Set Inverse
         var forward = TriangleNormal(jointPoints[(int)JointIndex.HIP].Transform.position,
@@ -318,6 +382,15 @@ public class AnimateCharacter : MonoBehaviour
                                 jointPoints[(int)JointIndex.RIGHT_MID].Pos3D);
         rHand.Transform.rotation = Quaternion.LookRotation(jointPoints[(int)JointIndex.RIGHT_THUMB].Pos3D -
                                    jointPoints[(int)JointIndex.RIGHT_MID].Pos3D, rf) * rHand.InverseRotation;
+
+        foreach (var sk in Skeletons)
+        {
+            var s = sk.start;
+            var e = sk.end;
+
+            sk.Line.SetPosition(0, new Vector3(s.Pos3D.x * SkeletonScale + SkeletonX, s.Pos3D.y * SkeletonScale + SkeletonY, s.Pos3D.z * SkeletonScale + SkeletonZ));
+            sk.Line.SetPosition(1, new Vector3(e.Pos3D.x * SkeletonScale + SkeletonX, e.Pos3D.y * SkeletonScale + SkeletonY, e.Pos3D.z * SkeletonScale + SkeletonZ));
+        }
     }
 
     /* Calculates the normal to the triangle defined by the 3 points */
@@ -335,5 +408,25 @@ public class AnimateCharacter : MonoBehaviour
     private Quaternion GetInverse(JointPoint p1, JointPoint p2, Vector3 forward)
     {
         return Quaternion.Inverse(Quaternion.LookRotation(p1.Transform.position - p2.Transform.position, forward));
+    }
+
+    private void AddSkeleton(JointIndex s, JointIndex e)
+    {
+        var sk = new Skeleton()
+        {
+            LineObject = new GameObject("Line"),
+            start = jointPoints[(int)s],
+            end = jointPoints[(int)e],
+        };
+
+        sk.Line = sk.LineObject.AddComponent<LineRenderer>();
+        sk.Line.startWidth = 0.04f;
+        sk.Line.endWidth = 0.01f;
+
+        // define the number of vertex
+        sk.Line.positionCount = 2;
+        sk.Line.material = SkeletonMaterial;
+
+        Skeletons.Add(sk);
     }
 }

@@ -702,6 +702,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fe09c37a68ce643a9f60fb20a44097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkeletonMaterial: {fileID: 2100000, guid: f8188c9479a7aad41b7448fe5eeed839, type: 2}
+  ShowSkeleton: 1
+  SkeletonX: -1
+  SkeletonY: 0.9
+  SkeletonZ: -2.5
+  SkeletonScale: 0.006
   ModelObject: {fileID: 1009339737}
   Nose: {fileID: 213079810}
   ZScale: 0.8
@@ -1351,7 +1357,7 @@ PrefabInstance:
     - target: {fileID: 8315583863135958854, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143335206, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
@@ -1376,17 +1382,17 @@ PrefabInstance:
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0001665471
+      value: -0.000165722
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000005999528
+      value: 0.000008656675
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00030241534
+      value: -0.000305409
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
@@ -1401,7 +1407,7 @@ PrefabInstance:
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.019000001
+      value: -0.019
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}

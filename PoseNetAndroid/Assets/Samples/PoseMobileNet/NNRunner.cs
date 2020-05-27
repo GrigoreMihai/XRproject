@@ -38,10 +38,10 @@ namespace TensorFlowLite
         {
             //const float OFFSET = 128f;
             //const float SCALE = 1f / 128f;
-            //const float OFFSET = 0f;
-            //const float SCALE = 1f / 255f;
-            //ToTensor(inputTexture, inputs, OFFSET, SCALE);
-            ToTensor(inputTexture, inputs);
+            const float OFFSET = 0.0f;
+            const float SCALE = 1.0f / 255.0f;
+            ToTensor(inputTexture, inputs, OFFSET, SCALE);
+            //ToTensor(inputTexture, inputs);
 
             interpreter.SetInputTensorData(0, inputs);
             interpreter.Invoke();
