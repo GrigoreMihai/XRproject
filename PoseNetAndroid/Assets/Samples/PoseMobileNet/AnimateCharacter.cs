@@ -110,7 +110,7 @@ public class AnimateCharacter : MonoBehaviour
 
         foreach (var jp in jointPoints)
         {
-            jp.Pos3D = jp.PrevPos3D * 0.5f + jp.Now3D * 0.5f;
+            jp.Pos3D = jp.PrevPos3D * 0.1f + jp.Now3D * 0.9f;
             jp.PrevPos3D = jp.Pos3D;
         }
 
