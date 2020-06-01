@@ -3012,6 +3012,36 @@ Transform:
   m_Father: {fileID: 3148654469881449623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4776104542024596093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8784985114727518757}
+  m_Layer: 0
+  m_Name: secondary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8784985114727518757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4776104542024596093}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6409554700681250344}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4867385044054857154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4780,6 +4810,7 @@ Transform:
   - {fileID: 7777837759906634853}
   - {fileID: 1096307705902084001}
   - {fileID: 1394002722719068275}
+  - {fileID: 8784985114727518757}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4793,7 +4824,7 @@ Animator:
   m_GameObject: {fileID: 7032258533655045440}
   m_Enabled: 1
   m_Avatar: {fileID: -6940580032368898678}
-  m_Controller: {fileID: 9100000, guid: 3173dc991e314594abd6180b45c49c92, type: 2}
+  m_Controller: {fileID: 9100000, guid: 212b3a957fa7bee41a0bf8c3b14ce293, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8173,7 +8204,7 @@ Avatar:
         m_X: []
     m_RootMotionSkeletonIndexArray: 
   m_TOS:
-    1136130350: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1/J_Bip_L_Thumb2/J_Bip_L_Thumb3/J_Bip_L_Thumb3_end
+    1796106265: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_L_FaceEyeSet
     795529479: Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Sec_R_SkirtBack
     2557469430: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand
     3148428353: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_L_FaceEyeSet/J_Adj_L_FaceEye
@@ -8252,8 +8283,8 @@ Avatar:
     2024282347: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/HairJoint-644f29f8-baed-4f17-bbbd-890c06d7d8ca/HairJoint-066b14d1-b5c8-4894-be3f-f2a2cd9773c9
     43560268: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Index1/J_Bip_L_Index2/J_Bip_L_Index3
     1851616533: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Little1
-    1856331957: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2/J_Bip_R_Ring3/J_Bip_R_Ring3_end
     175343328: Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Sec_R_SkirtFront0/J_Sec_R_SkirtFront1
+    1856331957: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2/J_Bip_R_Ring3/J_Bip_R_Ring3_end
     907541018: Root/J_Bip_C_Hips/J_Bip_L_UpperLeg/J_Sec_L_SkirtBack0/J_Sec_L_SkirtBack1
     3855793183: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Middle1/J_Bip_L_Middle2/J_Bip_L_Middle3
     20778455: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2
@@ -8342,7 +8373,7 @@ Avatar:
     3214659867: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Little1/J_Bip_L_Little2
     1787830355: Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Sec_R_SkirtBack0
     1831842874: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/HairJoint-3bc2fdb8-fcd7-4117-8fbc-f0ec28ec48f9
-    1796106265: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_L_FaceEyeSet
+    1136130350: Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1/J_Bip_L_Thumb2/J_Bip_L_Thumb3/J_Bip_L_Thumb3_end
   m_HumanDescription:
     serializedVersion: 3
     m_Human:
