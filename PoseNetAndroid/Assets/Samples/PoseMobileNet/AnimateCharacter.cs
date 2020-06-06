@@ -34,7 +34,7 @@ public enum JointIndex
     LEFT_TOE,
 
     ABDOMEN_UPPER,
-    
+
     /* Calculated points */
     HIP,
     HEAD,
@@ -95,7 +95,9 @@ public class AnimateCharacter : MonoBehaviour
     private Quaternion gazeInverse;
 
     // UnityChan
-    public GameObject ModelObject;
+    public GameObject ModelObject1;
+    public GameObject ModelObject2;
+    static public int abc;
     public GameObject Nose;
     private Animator anim;
 
@@ -127,7 +129,25 @@ public class AnimateCharacter : MonoBehaviour
         jointPoints = new JointPoint[(int)JointIndex.COUNT];
         for (var i = 0; i < (int)JointIndex.COUNT; i++)
             jointPoints[i] = new JointPoint();
-
+            //
+        GameObject ModelObject;
+        if(abc == 1) {
+            ModelObject = ModelObject1;
+            Renderer[] renderers = ModelObject2.GetComponentsInChildren<Renderer>();
+            foreach (Renderer r in renderers)
+            {
+              r.enabled = false;
+            }
+          }
+        else {
+          ModelObject = ModelObject2;
+          Renderer[] renderers = ModelObject1.GetComponentsInChildren<Renderer>();
+          foreach (Renderer r in renderers)
+          {
+            r.enabled = false;
+          }
+          }
+          //
         anim = ModelObject.GetComponent<Animator>();
 
         // Right Arm
