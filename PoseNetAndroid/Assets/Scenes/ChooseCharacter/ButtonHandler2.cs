@@ -6,6 +6,6 @@ public class ButtonHandler2 : MonoBehaviour
 {
   public void changeScene() {
     AnimateCharacter.abc = 2;
-    UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+    UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
   }
 }

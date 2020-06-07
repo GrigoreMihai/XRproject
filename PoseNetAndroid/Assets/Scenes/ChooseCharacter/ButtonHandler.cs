@@ -8,6 +8,6 @@ public class ButtonHandler : MonoBehaviour
     //public AnimateCharacter a;
     public void changeScene() {
       AnimateCharacter.abc = 1;
-      UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+      UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 }
