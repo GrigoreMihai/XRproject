@@ -2,6 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum JointIndex
+{
+    RIGHT_SHOULDER,
+    RIGHT_ELBOW,
+    RIGHT_WRIST,
+    RIGHT_THUMB,
+    RIGHT_MID,
+
+    LEFT_SHOULDER,
+    LEFT_ELBOW,
+    LEFT_WRIST,
+    LEFT_THUMB,
+    LEFT_MID,
+
+    LEFT_EAR,
+    LEFT_EYE,
+    RIGHT_EAR,
+    RIGHT_EYE,
+    NOSE,
+
+    RIGHT_HIP,
+    RIGHT_KNEE,
+    RIGHT_ANKLE,
+    RIGHT_TOE,
+
+    LEFT_HIP,
+    LEFT_KNEE,
+    LEFT_ANKLE,
+    LEFT_TOE,
+
+    ABDOMEN_UPPER,
+
+    /* Calculated points */
+    HIP,
+    HEAD,
+    NECK,
+    SPINE,
+
+    /* number of joints */
+    COUNT
+}
+
 namespace TensorFlowLite
 {
     [System.Serializable]
