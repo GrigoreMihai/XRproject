@@ -51,15 +51,15 @@ public class MainAR : MonoBehaviour
         texture = null;
 
         // Clip size
-        videoWidth = texture.width;
-        videoHeight = texture.height;
-        float padWidth = (videoWidth < videoHeight) ? 0 : (videoHeight - videoWidth) / 2;
-        float padHeight = (videoWidth < videoHeight) ? (videoWidth - videoHeight) / 2 : 0;
-        if (clipScale == 0f) clipScale = 0.001f;
-        var w = (videoWidth + padWidth * 2f) * clipScale;
-        padWidth += w;
-        padHeight += w;
-        clipRect = new UnityEngine.Rect(-padWidth, -padHeight, videoWidth + padWidth * 2, videoHeight + padHeight * 2);
+        // videoWidth = texture.width;
+        // videoHeight = texture.height;
+        // float padWidth = (videoWidth < videoHeight) ? 0 : (videoHeight - videoWidth) / 2;
+        // float padHeight = (videoWidth < videoHeight) ? (videoWidth - videoHeight) / 2 : 0;
+        // if (clipScale == 0f) clipScale = 0.001f;
+        // var w = (videoWidth + padWidth * 2f) * clipScale;
+        // padWidth += w;
+        // padHeight += w;
+        // clipRect = new UnityEngine.Rect(-padWidth, -padHeight, videoWidth + padWidth * 2, videoHeight + padHeight * 2);
 
         results = new NetworkResult[(int)JointIndex.COUNT];
     }
@@ -104,12 +104,22 @@ public class MainAR : MonoBehaviour
     bool getCameraTexture()
     {
         var image = Frame.CameraImage.AcquireCameraImageBytes();
-        if(!image.IsAvailable) {
-            return false;
-        }
+        // if(!image.IsAvailable) {
+        //     return false;
+        // }
         if(texture == null) {
             texture = new Texture2D(image.Width, image.Height, TextureFormat.ARGB32, false, false);
             pixelConversionBuffer = new byte[image.Width*image.Height*4];
+
+            videoWidth = texture.width;
+            videoHeight = texture.height;
+            float padWidth = (videoWidth < videoHeight) ? 0 : (videoHeight - videoWidth) / 2;
+            float padHeight = (videoWidth < videoHeight) ? (videoWidth - videoHeight) / 2 : 0;
+            if (clipScale == 0f) clipScale = 0.001f;
+            var w = (videoWidth + padWidth * 2f) * clipScale;
+            padWidth += w;
+            padHeight += w;
+            clipRect = new UnityEngine.Rect(-padWidth, -padHeight, videoWidth + padWidth * 2, videoHeight + padHeight * 2);
         }
         unsafe {
             byte * Y = (byte*)image.Y.ToPointer();
