@@ -5,10 +5,12 @@ using GoogleARCore;
 
 public class SceneController : MonoBehaviour
 {
+    public CharacterController character;
     // Start is called before the first frame update
     void Start()
     {
         QuitOnConnectionErrors();
+        character.CreateAnchor();
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class SceneController : MonoBehaviour
             return;
         }
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        character.CreateAnchor();
     }
 
     void QuitOnConnectionErrors()
