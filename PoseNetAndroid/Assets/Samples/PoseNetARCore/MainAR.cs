@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using TensorFlowLite;
+using GoogleARCore;
 
-public class Main : MonoBehaviour
+public class MainAR : MonoBehaviour
 {
     //[SerializeField] string fileName = "converted_model.tflite";
     [SerializeField] string fileName = "MobileNet3D2.tflite";
@@ -15,8 +16,8 @@ public class Main : MonoBehaviour
     //[SerializeField] GLDrawer glDrawer = null;
     [SerializeField, Range(0f, 1f)] float threshold = 0.5f;
 
-    private WebCamTexture webcamTexture;
-    //public Camera webcamTexture;
+    //private WebCamTexture webcamTexture;
+    public Camera webcamTexture;
     NNRunner network;
     Vector3[] corners = new Vector3[4];
 
@@ -46,21 +47,24 @@ public class Main : MonoBehaviour
         string path = Path.Combine(Application.streamingAssetsPath, fileName);
         network = new NNRunner(path);
 
-        WebCamDevice[] devices = WebCamTexture.devices;
-        webcamTexture = new WebCamTexture(devices[0].name);
+        //WebCamDevice[] devices = WebCamTexture.devices;
+        //webcamTexture = new WebCamTexture(devices[0].name);
 
+        /*
         GameObject videoScreen = GameObject.Find("VideoScreen");
         RawImage screen = videoScreen.GetComponent<RawImage>();
         var sd = screen.GetComponent<RectTransform>();
         screen.texture = webcamTexture;
+        */
 
-        webcamTexture.Play();
+        //webcamTexture.Play();
 
-        sd.sizeDelta = new Vector2(videoScreenWidth, (int)(videoScreenWidth * webcamTexture.height / webcamTexture.width));
+        //sd.sizeDelta = new Vector2(videoScreenWidth, (int)(videoScreenWidth * webcamTexture.height / webcamTexture.width));
 
-        //texture = GoogleARCore.Frame.CameraImage.Texture;
+        var textureIn = Frame.CameraImage.TextureIntrinsics;
+        texture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
 
-        texture = new Texture2D(webcamTexture.width, webcamTexture.height);
+        //texture = new Texture2D(webcamTexture.width, webcamTexture.height);
 
         // Clip size
         videoWidth = texture.width;
@@ -90,7 +94,7 @@ public class Main : MonoBehaviour
 
     void OnDestroy()
     {
-        webcamTexture?.Stop();
+        //webcamTexture?.Stop();
         network?.Dispose();
         //glDrawer.OnDraw -= OnGLDraw;
     }
@@ -109,9 +113,11 @@ public class Main : MonoBehaviour
 
     void Update()
     {
+        /*
         Color32[] color32 = webcamTexture.GetPixels32();
         texture.SetPixels32(color32);
         texture.Apply();
+        */
 
 
         StartCoroutine("RunNetwork", texture);
