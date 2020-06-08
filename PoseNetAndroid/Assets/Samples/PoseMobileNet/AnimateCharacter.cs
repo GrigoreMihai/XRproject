@@ -97,7 +97,7 @@ public class AnimateCharacter : MonoBehaviour
     // UnityChan
     public GameObject ModelObject1;
     public GameObject ModelObject2;
-    static public int abc;
+    static public int abc = 1;
     public GameObject Nose;
     private Animator anim;
 
