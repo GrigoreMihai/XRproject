@@ -61,8 +61,13 @@ public class MainAR : MonoBehaviour
 
         //sd.sizeDelta = new Vector2(videoScreenWidth, (int)(videoScreenWidth * webcamTexture.height / webcamTexture.width));
 
-        var textureIn = Frame.CameraImage.TextureIntrinsics;
-        texture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
+        //var textureIn = Frame.CameraImage.TextureIntrinsics;
+        //texture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
+
+        var backTexture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
+        var resultImage = new byte[Screen.width * Screen.height];
+        backTexture.LoadRawTextureData(resultImage);
+        backTexture.Apply();
 
         //texture = new Texture2D(webcamTexture.width, webcamTexture.height);
 

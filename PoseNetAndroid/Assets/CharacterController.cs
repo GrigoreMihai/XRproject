@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     public Camera firstPersonCamera;
     private Anchor anchor;
+    float distance = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class CharacterController : MonoBehaviour
 
     public void CreateAnchor()
     {
+        /*
         // Create the position of the anchor by raycasting a point towards
         // the top of the screen.
         Vector2 pos = new Vector2(Screen.width * .5f, Screen.height * .90f);
@@ -41,9 +43,19 @@ public class CharacterController : MonoBehaviour
         {
             DestroyObject(anchor);
         }
+        */
 
+        /*
+        anchor = Session.CreateAnchor(
+            Frame.getCamera().getPose()
+            .compose(Pose.makeTranslation(0, 0, -1f))
+            .extractTranslation());
+        */
+
+        /*
         anchor = Session.CreateAnchor(
             new Pose(anchorPosition, Quaternion.identity));
+        */
 
         /*
         anchor = Session.CreateAnchor(
@@ -52,9 +64,15 @@ public class CharacterController : MonoBehaviour
             .extractTranslation());
         */
 
+        transform.position = firstPersonCamera.transform.position +
+            firstPersonCamera.transform.forward * distance;
+
+        transform.SetParent(firstPersonCamera.transform);
+        transform.localPosition = Vector3.forward * distance;
+
         // Attach the scoreboard to the anchor.
-        transform.position = anchorPosition;
-        transform.SetParent(anchor.transform);
+        //transform.position = anchorPosition;
+        //transform.SetParent(anchor.transform);
         
         // Finally, enable the renderers.
         foreach (Renderer r in GetComponentsInChildren<Renderer>())
