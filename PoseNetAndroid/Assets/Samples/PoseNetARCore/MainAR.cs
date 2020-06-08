@@ -47,29 +47,8 @@ public class MainAR : MonoBehaviour
         string path = Path.Combine(Application.streamingAssetsPath, fileName);
         network = new NNRunner(path);
 
-        //WebCamDevice[] devices = WebCamTexture.devices;
-        //webcamTexture = new WebCamTexture(devices[0].name);
-
-        /*
-        GameObject videoScreen = GameObject.Find("VideoScreen");
-        RawImage screen = videoScreen.GetComponent<RawImage>();
-        var sd = screen.GetComponent<RectTransform>();
-        screen.texture = webcamTexture;
-        */
-
-        //webcamTexture.Play();
-
-        //sd.sizeDelta = new Vector2(videoScreenWidth, (int)(videoScreenWidth * webcamTexture.height / webcamTexture.width));
-
-        //var textureIn = Frame.CameraImage.TextureIntrinsics;
-        //texture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
-
-        var backTexture = new Texture2D(Screen.width, Screen.height, TextureFormat.R8, false, false);
-        var resultImage = new byte[Screen.width * Screen.height];
-        backTexture.LoadRawTextureData(resultImage);
-        backTexture.Apply();
-
-        //texture = new Texture2D(webcamTexture.width, webcamTexture.height);
+        //texture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false, false);
+        texture = null;
 
         // Clip size
         videoWidth = texture.width;
@@ -81,18 +60,6 @@ public class MainAR : MonoBehaviour
         padWidth += w;
         padHeight += w;
         clipRect = new UnityEngine.Rect(-padWidth, -padHeight, videoWidth + padWidth * 2, videoHeight + padHeight * 2);
-
-        /*
-        networkInputs = new Texture[1];
-        networkInputs[0] = webcamTexture;
-
-        glDrawer.OnDraw += OnGLDraw;
-
-        imageRotation.eulerAngles = new Vector3(0, 0, 180);
-
-        Vector3 test = new Vector3(1, 0, 0);
-        Debug.Log(imageRotation * test);
-        */
 
         results = new NetworkResult[(int)JointIndex.COUNT];
     }
@@ -116,6 +83,62 @@ public class MainAR : MonoBehaviour
         animateCharacter.SetNetworkResults(results);
     }
 
+    static int clamp(int val, int lower, int upper) {
+        if(val < lower)
+            return lower;
+        if(val > upper)
+            return upper;
+        return val;
+    }
+
+    static (byte r, byte g, byte b) yuv2rgb(byte y, byte u, byte v)//, byte * buf)
+    {
+        var r = (int)(y + (1.370705f * (v-128)));
+        var g = (int)(y + (0.698001f * (v-128)) - (0.337633f * (u-128)));
+        var b = (int)(y + (1.732446f * (u-128)));
+        return ((byte)clamp(r, 0, 255), (byte)clamp(g, 0, 255), (byte)clamp(b, 0, 255));
+    }
+
+    byte [] pixelConversionBuffer;
+
+    bool getCameraTexture()
+    {
+        var image = Frame.CameraImage.AcquireCameraImageBytes();
+        if(!image.IsAvailable) {
+            return false;
+        }
+        if(texture == null) {
+            texture = new Texture2D(image.Width, image.Height, TextureFormat.ARGB32, false, false);
+            pixelConversionBuffer = new byte[image.Width*image.Height*4];
+        }
+        unsafe {
+            byte * Y = (byte*)image.Y.ToPointer();
+            byte * U = (byte*)image.U.ToPointer();
+            byte * V = (byte*)image.V.ToPointer();
+            for(uint y = 0; y < image.Height; y++) {
+                uint halfy = y >> 1;
+                long index = y * 4 * image.Width;
+                for(uint x = 0; x < image.Width; x++) {
+                    uint halfx = x >> 1;
+                    byte yval = *(Y + y * image.YRowStride + x);
+                    byte uval = *(U + halfy * image.UVRowStride + halfx * image.UVPixelStride);
+                    byte vval = *(V + halfy * image.UVRowStride + halfx * image.UVPixelStride);
+
+                    var color = yuv2rgb(yval, uval, vval);
+                    pixelConversionBuffer[index+0] = 127;
+                    pixelConversionBuffer[index+1] = color.r;
+                    pixelConversionBuffer[index+2] = color.g;
+                    pixelConversionBuffer[index+3] = color.b;
+
+                    index += 4;
+                }
+            }
+        }
+        texture.LoadRawTextureData(pixelConversionBuffer);
+        texture.Apply();
+        return true;
+    }
+
     void Update()
     {
         /*
@@ -124,8 +147,9 @@ public class MainAR : MonoBehaviour
         texture.Apply();
         */
 
-
-        StartCoroutine("RunNetwork", texture);
+        if(getCameraTexture()) {
+            StartCoroutine("RunNetwork", texture);
+        }
         //results = network.GetResults();
         //results = networkResults;
 
