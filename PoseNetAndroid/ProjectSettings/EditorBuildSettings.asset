@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PoseMobileNet/ChooseCharacter.unity
     guid: 606e05ae98ffefd42833bd4f86e228b9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PoseMobileNet/SampleScene.unity
     guid: 52707666113f2cb499d977e534e0d62c
+  - enabled: 1
+    path: Assets/Samples/PoseNetARCore/ARCoreScene.unity
+    guid: 3adc357938797074caae2399beda9b02
   m_configObjects: {}
