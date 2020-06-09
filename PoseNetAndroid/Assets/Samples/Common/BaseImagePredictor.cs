@@ -40,9 +40,9 @@ namespace TensorFlowLite
             resizeOptions = new TextureToTensor.ResizeOptions()
             {
                 aspectMode = TextureToTensor.AspectMode.Fill,
-                rotationDegree = 0,
+                rotationDegree = -90,
                 flipX = false,
-                flipY = true,
+                flipY = false,
                 width = width,
                 height = height,
             };
