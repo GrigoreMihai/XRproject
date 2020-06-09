@@ -51,7 +51,7 @@ Shader "EdgeDetectionBackground"
                 #ifdef SHADER_API_GLES3
 
                 vec4 color = texture2D(_ImageTex, textureCoord);
-                gl_FragColor.xyz = color.xyz;
+                gl_FragColor = vec4(color.r, color.r, color.r, 1.0);
                 #endif
             }
 
