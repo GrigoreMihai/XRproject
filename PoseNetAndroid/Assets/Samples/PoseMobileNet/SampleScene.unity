@@ -1089,7 +1089,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1797305983796964, guid: 2629a30b7c43aa94d914368a76b45918, type: 3}
       propertyPath: m_Name
-      value: Yuna Prefab
+      value: Yuna
       objectReference: {fileID: 0}
     - target: {fileID: 1797305983796964, guid: 2629a30b7c43aa94d914368a76b45918, type: 3}
       propertyPath: m_IsActive
@@ -1814,7 +1814,7 @@ PrefabInstance:
     - target: {fileID: 5500596564883443757, guid: 67f87375fbff071479c8ba6e38ebf291,
         type: 3}
       propertyPath: m_Name
-      value: asobi_chan_b_black
+      value: Asobi
       objectReference: {fileID: 0}
     - target: {fileID: 5500596564883443757, guid: 67f87375fbff071479c8ba6e38ebf291,
         type: 3}
