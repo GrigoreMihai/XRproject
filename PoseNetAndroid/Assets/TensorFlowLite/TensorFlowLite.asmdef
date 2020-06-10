@@ -1,8 +1,6 @@
 {
     "name": "TensorFlowLite",
-    "references": [
-        "GUID:a2cfbd39b2879f4079e4e0bc2f2e7d8b"
-    ],
+    "references": [],
     "includePlatforms": [
         "Android",
         "Editor",
