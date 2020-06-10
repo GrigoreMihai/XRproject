@@ -25,5 +25,26 @@ namespace Tests
             runner.GetResults();
         }
 
+        [Test]
+        public void NetworkInputSizeTest()
+        {
+            var converter = new TextureToTensor();
+            var options = new TextureToTensor.ResizeOptions()
+                {
+                    aspectMode = TextureToTensor.AspectMode.Fill,
+                    rotationDegree = 180,
+                    flipX = false,
+                    flipY = false,
+                    width = 320,
+                    height = 140,
+                };
+            var texture = new Texture2D(1080, 720, TextureFormat.RGBA32, false);
+            var resized = converter.Resize(texture, options);
+            Assert.That(resized.width, Is.EqualTo(320));
+            Assert.That(resized.height, Is.EqualTo(140));
+
+
+        }
+
     }
 }
