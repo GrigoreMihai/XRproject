@@ -43,7 +43,8 @@ public class Main : MonoBehaviour
     void Start()
     {
         string path = Path.Combine(Application.streamingAssetsPath, fileName);
-        network = new NNRunner(path);
+
+        network = NNRunner.Instance;
 
         WebCamDevice[] devices = WebCamTexture.devices;
         webcamTexture = new WebCamTexture(devices[0].name);

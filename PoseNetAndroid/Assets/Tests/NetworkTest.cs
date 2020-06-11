@@ -19,7 +19,7 @@ namespace Tests
         [Test]
         public void NetworkIntegrationTest()
         {
-            NNRunner runner = new NNRunner("MobileNet3D2.tflite");
+            NNRunner runner = NNRunner.Instance;
             Texture2D input = new Texture2D(224, 224, TextureFormat.RGBA32, false);
             runner.Invoke(input);
             var results = runner.GetResults();
@@ -43,8 +43,6 @@ namespace Tests
             var resized = converter.Resize(texture, options);
             Assert.That(resized.width, Is.EqualTo(320));
             Assert.That(resized.height, Is.EqualTo(140));
-
-
         }
 
     }
