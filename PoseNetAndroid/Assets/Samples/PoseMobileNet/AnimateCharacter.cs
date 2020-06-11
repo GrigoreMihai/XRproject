@@ -58,6 +58,7 @@ public class AnimateCharacter : MonoBehaviour
     public GameObject ModelObject4;
 
     static public int activeModel = 1;
+    static public bool bFrozen = true;
     public GameObject Nose;
     private Animator anim;
 
@@ -86,10 +87,11 @@ public class AnimateCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bFrozen = true;
         jointPoints = new JointPoint[(int)JointIndex.COUNT];
         for (var i = 0; i < (int)JointIndex.COUNT; i++)
             jointPoints[i] = new JointPoint();
-            
+
         //choose active model
         GameObject ModelObject;
         Renderer[] renderers1, renderers2, renderers3;
@@ -313,6 +315,9 @@ public class AnimateCharacter : MonoBehaviour
     {
         if(jointPoints == null)
         {
+            return;
+        }
+        if(bFrozen == false) {
             return;
         }
 
