@@ -22,7 +22,8 @@ namespace Tests
             NNRunner runner = new NNRunner("MobileNet3D2.tflite");
             Texture2D input = new Texture2D(224, 224, TextureFormat.RGBA32, false);
             runner.Invoke(input);
-            runner.GetResults();
+            var results = runner.GetResults();
+            Assert.That((int)results.Length, Is.EqualTo((int)JointIndex.COUNT));
         }
 
         [Test]
