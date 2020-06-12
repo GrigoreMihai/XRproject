@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkeletonMaterial: {fileID: 2100000, guid: f8188c9479a7aad41b7448fe5eeed839, type: 2}
-  ShowSkeleton: 1
+  ShowSkeleton: 0
   SkeletonX: -1
   SkeletonY: 0.9
   SkeletonZ: -2.5
