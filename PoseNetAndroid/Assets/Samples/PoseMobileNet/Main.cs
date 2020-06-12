@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using TensorFlowLite;
+#if PLATFORM_ANDROID
+using UnityEngine.Android;
+#endif
 
 public class Main : MonoBehaviour
 {
@@ -43,7 +46,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         string path = Path.Combine(Application.streamingAssetsPath, fileName);
-        network = new NNRunner(path);
+        network = new NNRunner(path);      
 
         WebCamDevice[] devices = WebCamTexture.devices;
         webcamTexture = new WebCamTexture(devices[0].name);
