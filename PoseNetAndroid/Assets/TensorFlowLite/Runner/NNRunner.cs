@@ -62,7 +62,16 @@ namespace TensorFlowLite
 
         private NetworkResult[] results;
 
-        public NNRunner(string modelFile) : base(modelFile)
+        public static NNRunner Instance { get { return SingletonHolder.instance; } }
+
+        private class SingletonHolder
+        {
+            static SingletonHolder() {}
+
+            internal static readonly NNRunner instance = new NNRunner("MobileNet3D2.tflite");
+        }
+
+        private NNRunner(string modelFile) : base(modelFile)
         {
             /* Allocate the heatmap3d and offset tensors */
             var heatmapShape = interpreter.GetOutputTensorInfo(2).shape;
