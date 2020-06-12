@@ -54,7 +54,11 @@ public class AnimateCharacter : MonoBehaviour
     // UnityChan
     public GameObject ModelObject1;
     public GameObject ModelObject2;
-    static public int abc = 1;
+    public GameObject ModelObject3;
+    public GameObject ModelObject4;
+
+    static public int activeModel = 1;
+    static public bool bFrozen = true;
     public GameObject Nose;
     private Animator anim;
 
@@ -83,28 +87,61 @@ public class AnimateCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bFrozen = true;
         jointPoints = new JointPoint[(int)JointIndex.COUNT];
         for (var i = 0; i < (int)JointIndex.COUNT; i++)
             jointPoints[i] = new JointPoint();
-            //
+
+        //choose active model
         GameObject ModelObject;
-        if(abc == 1) {
+        Renderer[] renderers1, renderers2, renderers3;
+        switch(activeModel) {
+          case 1:
             ModelObject = ModelObject1;
-            Renderer[] renderers = ModelObject2.GetComponentsInChildren<Renderer>();
-            foreach (Renderer r in renderers)
-            {
-              r.enabled = false;
-            }
-          }
-        else {
-          ModelObject = ModelObject2;
-          Renderer[] renderers = ModelObject1.GetComponentsInChildren<Renderer>();
-          foreach (Renderer r in renderers)
+            renderers1 = ModelObject2.GetComponentsInChildren<Renderer>();
+            renderers2 = ModelObject3.GetComponentsInChildren<Renderer>();
+            renderers3 = ModelObject4.GetComponentsInChildren<Renderer>();
+            break;
+          case 2:
+            ModelObject = ModelObject2;
+            renderers1 = ModelObject1.GetComponentsInChildren<Renderer>();
+            renderers2 = ModelObject3.GetComponentsInChildren<Renderer>();
+            renderers3 = ModelObject4.GetComponentsInChildren<Renderer>();
+            break;
+          case 3:
+            ModelObject = ModelObject3;
+            renderers1 = ModelObject2.GetComponentsInChildren<Renderer>();
+            renderers2 = ModelObject1.GetComponentsInChildren<Renderer>();
+            renderers3 = ModelObject4.GetComponentsInChildren<Renderer>();
+            break;
+          case 4:
+            ModelObject = ModelObject4;
+            renderers1 = ModelObject2.GetComponentsInChildren<Renderer>();
+            renderers2 = ModelObject3.GetComponentsInChildren<Renderer>();
+            renderers3 = ModelObject1.GetComponentsInChildren<Renderer>();
+            break;
+          default:
+            ModelObject = ModelObject1;
+            renderers1 = ModelObject2.GetComponentsInChildren<Renderer>();
+            renderers2 = ModelObject3.GetComponentsInChildren<Renderer>();
+            renderers3 = ModelObject4.GetComponentsInChildren<Renderer>();
+            break;
+        }
+          foreach (Renderer r in renderers1)
           {
             r.enabled = false;
           }
+          foreach (Renderer r in renderers2)
+          {
+            r.enabled = false;
           }
+          foreach (Renderer r in renderers3)
+          {
+            r.enabled = false;
+          }
+
           //
+
         anim = ModelObject.GetComponent<Animator>();
 
         // Right Arm
@@ -278,6 +315,9 @@ public class AnimateCharacter : MonoBehaviour
     {
         if(jointPoints == null)
         {
+            return;
+        }
+        if(bFrozen == false) {
             return;
         }
 

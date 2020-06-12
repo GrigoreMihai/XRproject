@@ -14,9 +14,9 @@ public class DontDestroy : MonoBehaviour
    }
    void Update()
      {
-         if (SceneManager.GetActiveScene().name == "SampleScene")
-         {
-             Destroy(this.gameObject);
-         }
+         // if (SceneManager.GetActiveScene().name == "SampleScene")
+         // {
+         //     Destroy(this.gameObject);
+         // }
      }
 }
