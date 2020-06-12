@@ -826,7 +826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &769284634
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1059,7 +1059,7 @@ VideoPlayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187676600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_VideoClip: {fileID: 32900000, guid: d68d253959d32bc4c8cfdbe750bc6b97, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
@@ -1605,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4708503561146946, guid: 2629a30b7c43aa94d914368a76b45918, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4708503561146946, guid: 2629a30b7c43aa94d914368a76b45918, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2557,7 +2557,7 @@ PrefabInstance:
     - target: {fileID: 2258376802463328592, guid: 67f87375fbff071479c8ba6e38ebf291,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2258376802463328592, guid: 67f87375fbff071479c8ba6e38ebf291,
         type: 3}
@@ -2696,7 +2696,7 @@ PrefabInstance:
     - target: {fileID: 6409554700681250344, guid: 6d0d8b66154969d49b811b16e2cf6345,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6409554700681250344, guid: 6d0d8b66154969d49b811b16e2cf6345,
         type: 3}
@@ -2830,7 +2830,7 @@ PrefabInstance:
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8315583863143700678, guid: 376f47ea3b23a0c4390f513d69e1ca66,
         type: 3}
