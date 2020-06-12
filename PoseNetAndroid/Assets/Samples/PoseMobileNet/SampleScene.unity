@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &71480454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -709,7 +709,6 @@ MonoBehaviour:
   results: []
   animateCharacter: {fileID: 1009339738}
   clipScale: 0.15
-  TextureObject: {fileID: 71480453}
 --- !u!1 &615228728 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8315583863143335298, guid: 376f47ea3b23a0c4390f513d69e1ca66,

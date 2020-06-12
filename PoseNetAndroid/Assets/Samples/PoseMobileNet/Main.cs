@@ -36,7 +36,7 @@ public class Main : MonoBehaviour
     private UnityEngine.Rect clipRect;
     public float clipScale;
 
-    public GameObject TextureObject;
+    //public GameObject TextureObject;
 
     private const int inputImageSize = 224;
 
@@ -236,14 +236,14 @@ public class Main : MonoBehaviour
         GL.Clear(true, true, new Color(0, 0, 0, 0));
         Graphics.DrawTexture(new UnityEngine.Rect(0, 0, aspectWidth, aspectHeight), src);
 
-        UnityEngine.Rect dstRect = new UnityEngine.Rect(0, 0, 224, 224);
-        Texture2D dst = (Texture2D)TextureObject.GetComponent<Renderer>().material.mainTexture;
-        dst.ReadPixels(dstRect, 0, 0, true);
-        Graphics.SetRenderTarget(null);
+        //UnityEngine.Rect dstRect = new UnityEngine.Rect(0, 0, 224, 224);
+        //Texture2D dst = (Texture2D)TextureObject.GetComponent<Renderer>().material.mainTexture;
+        //dst.ReadPixels(dstRect, 0, 0, true);
+        //Graphics.SetRenderTarget(null);
         Destroy(rt);
 
-        dst.Apply();
+        //dst.Apply();
 
-        TextureObject.GetComponent<Renderer>().material.mainTexture = dst;       
+        //TextureObject.GetComponent<Renderer>().material.mainTexture = dst;       
     }
 }
